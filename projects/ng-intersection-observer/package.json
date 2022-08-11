@@ -1,6 +1,6 @@
 {
   "name": "ng-intersection-observer",
-  "version": "13.0.0",
+  "version": "14.0.0",
   "peerDependencies": {
     "@angular/common": "^14.1.2",
     "@angular/core": "^14.1.2"
