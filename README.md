@@ -1,27 +1,51 @@
-# NgIntersectionObserver
+# ngx-intersection-observer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
+Intersection Observer for Angular
 
-## Development server
+## Get started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```
+npm install ngx-intersection-observer --save
+```
 
-## Code scaffolding
+Once everything is installed, you need to add the module into your own module.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```ts
+import { IntersectionObserverModule } from 'ngx-intersection-observer';
 
-## Build
+@NgModule({
+    ...,
+    imports: [
+        IntersectionObserverModule
+    ],
+    ...
+})
+export class AppModule { }
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## How to use?
 
-## Running unit tests
+You can then use the directive inside your components.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<div #container>
+  <div
+    observeVisibility
+    [observeVisibilityRoot]="container"
+    [observeVisibilityThreshold]="0"
+    (visible)="onVisible()"
+    (hidden)="onHidden()"
+  ></div>
+</div>
+```
 
-## Running end-to-end tests
+You will have the possibility to configure the observer with the following params:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- `observeVisibilityRoot` - the root container used - to see if the element is visible (`Document` by default)
+- `observeVisibilityRootMargin` - the margin applied to the root container to detect visibility (`0` by default)
+- `observeVisibilityThreshold` - the threshold level to detect when the element should be considered visible or hidden (`0` by default)
 
-## Further help
+And then by observing the intersection, you can listen to the following events:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `visible` - when the element become visible inside the root element
+- `hidden` - when the element is now hidden

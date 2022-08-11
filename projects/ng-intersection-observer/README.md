@@ -1,24 +1,51 @@
-# NgIntersectionObserver
+# ngx-intersection-observer
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+Intersection Observer for Angular
 
-## Code scaffolding
+## Get started
 
-Run `ng generate component component-name --project ng-intersection-observer` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-intersection-observer`.
-> Note: Don't forget to add `--project ng-intersection-observer` or else it will be added to the default project in your `angular.json` file. 
+```
+npm install ngx-intersection-observer --save
+```
 
-## Build
+Once everything is installed, you need to add the module into your own module.
 
-Run `ng build ng-intersection-observer` to build the project. The build artifacts will be stored in the `dist/` directory.
+```ts
+import { IntersectionObserverModule } from 'ngx-intersection-observer';
 
-## Publishing
+@NgModule({
+    ...,
+    imports: [
+        IntersectionObserverModule
+    ],
+    ...
+})
+export class AppModule { }
+```
 
-After building your library with `ng build ng-intersection-observer`, go to the dist folder `cd dist/ng-intersection-observer` and run `npm publish`.
+## How to use?
 
-## Running unit tests
+You can then use the directive inside your components.
 
-Run `ng test ng-intersection-observer` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<div #container>
+  <div
+    observeVisibility
+    [observeVisibilityRoot]="container"
+    [observeVisibilityThreshold]="0"
+    (visible)="onVisible()"
+    (hidden)="onHidden()"
+  ></div>
+</div>
+```
 
-## Further help
+You will have the possibility to configure the observer with the following params:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `observeVisibilityRoot` - the root container used - to see if the element is visible (`Document` by default)
+- `observeVisibilityRootMargin` - the margin applied to the root container to detect visibility (`0` by default)
+- `observeVisibilityThreshold` - the threshold level to detect when the element should be considered visible or hidden (`0` by default)
+
+And then by observing the intersection, you can listen to the following events:
+
+- `visible` - when the element become visible inside the root element
+- `hidden` - when the element is now hidden
