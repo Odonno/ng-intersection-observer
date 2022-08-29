@@ -1,17 +1,17 @@
-# ngx-intersection-observer
+# ng-intersection-observer
 
 Intersection Observer for Angular
 
 ## Get started
 
 ```
-npm install ngx-intersection-observer --save
+npm install ng-intersection-observer --save
 ```
 
 Once everything is installed, you need to add the module into your own module.
 
 ```ts
-import { IntersectionObserverModule } from 'ngx-intersection-observer';
+import { IntersectionObserverModule } from 'ng-intersection-observer';
 
 @NgModule({
     ...,
