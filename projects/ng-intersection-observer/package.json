@@ -1,6 +1,6 @@
 {
   "name": "ng-intersection-observer",
-  "version": "14.0.2",
+  "version": "15.0.0",
   "description": "Intersection Observer for Angular",
   "repository": {
     "type": "git",
